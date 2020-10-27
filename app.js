@@ -3,6 +3,12 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
+var dotenv = require('dotenv')
+
+dotenv.config({ path: './config/config.env' })
+
+const connectMongo = require('./config/database')
+connectMongo()
 
 var indexRouter = require('./routes/index');
 
