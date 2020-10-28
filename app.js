@@ -12,6 +12,7 @@ connectMongo();
 
 var indexRouter = require("./routes/index");
 var transactionRouter = require("./routes/transactionsRouter");
+var accountRouter = require("./routes/accountRouter");
 
 var app = express();
 
@@ -27,6 +28,7 @@ app.use(express.static(path.join(__dirname, "public")));
 
 app.use("/", indexRouter);
 app.use("/api/v1/transactions", transactionRouter);
+app.use("/api/v1/accounts", accountRouter);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
