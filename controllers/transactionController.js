@@ -1,7 +1,7 @@
 const TransactionModel = require("../models/transactionModel");
 const { response } = require("express");
 
-exports.getTransactions = async (req, res, next) => {
+exports.getTransactions = async (req, res) => {
   try {
     const transactions = await TransactionModel.find();
 
@@ -18,9 +18,8 @@ exports.getTransactions = async (req, res, next) => {
   }
 };
 
-exports.addTransactions = async (req, res, next) => {
+exports.addTransactions = async (req, res) => {
   try {
-    const { type, text, amount, merchant } = req.body;
     const transactions = await TransactionModel.create(req.body);
 
     return res.status(201).json({
@@ -43,7 +42,7 @@ exports.addTransactions = async (req, res, next) => {
   }
 };
 
-exports.deleteTransactions = async (res, req, next) => {
+exports.deleteTransactions = async (res, req) => {
   try {
     const transcations = await TransactionModel.findById(req.params.id);
     if (!transactions) {
