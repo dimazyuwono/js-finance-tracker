@@ -23,12 +23,9 @@ const TransactionSchema = new mongoose.Schema(
       type: String,
       required: [true, "Please add Merchant name"],
     },
-    createdAt: {
-      type: Date,
-      default: Date.now,
-    },
   },
   {
+    timestamps: true,
     autoIndex: true,
   }
 );

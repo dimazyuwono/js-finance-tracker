@@ -12,13 +12,10 @@ const AccountSchema = new mongoose.Schema(
       type: Number,
       required: [true, "Please put the balance amount of the Account"],
     },
-    createdAt: {
-      type: Date,
-      default: Date.now(),
-    },
   },
   {
     autoIndex: true,
+    timestamps: true,
   }
 );
 

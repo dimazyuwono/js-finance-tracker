@@ -1,6 +1,6 @@
 const AccountModel = require("../models/accountModels");
 
-exports.getAccounts = async (req, res, next) => {
+exports.getAccounts = async (req, res) => {
   try {
     let accounts = await AccountModel.find();
     return res.status(200).json({
@@ -16,7 +16,7 @@ exports.getAccounts = async (req, res, next) => {
   }
 };
 
-exports.addAccounts = async (req, res, next) => {
+exports.addAccounts = async (req, res) => {
   try {
     let accounts = await AccountModel.create(req.body);
     return res.status(200).json({
@@ -38,7 +38,7 @@ exports.addAccounts = async (req, res, next) => {
   }
 };
 
-exports.deleteAccounts = async (req, res, next) => {
+exports.deleteAccounts = async (req, res) => {
   try {
     let accounts = await AccountModel.findById(req.params.id);
     if (!accounts) {
