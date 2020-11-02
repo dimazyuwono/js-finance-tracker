@@ -15,6 +15,10 @@ const TransactionSchema = new mongoose.Schema(
       trim: true,
       required: [true, "Please add Transaction description"],
     },
+    account: {
+      type: String,
+      required: [true,"Please define Account ID"]
+    },
     amount: {
       type: Number,
       required: [true, "Please add Amount value"],

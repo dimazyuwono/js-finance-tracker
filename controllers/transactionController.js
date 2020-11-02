@@ -1,4 +1,5 @@
 const TransactionModel = require("../models/transactionModel");
+const AccountModel = require("../models/accountModel");
 const { response } = require("express");
 
 exports.getTransactions = async (req, res) => {
@@ -20,6 +21,16 @@ exports.getTransactions = async (req, res) => {
 
 exports.addTransactions = async (req, res) => {
   try {
+    try {
+      const account = await AccountModel.findById(req.body.account);
+      const update_account = await AccountModel.create({
+        name: account.name,
+        balance: account.balance - req.body.amount,
+      });
+    } catch (error) {
+      console.log(error);
+    }
+
     const transactions = await TransactionModel.create(req.body);
 
     return res.status(201).json({
